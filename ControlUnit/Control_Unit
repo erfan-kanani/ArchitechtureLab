@@ -1,0 +1,116 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-965-g55e06db6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000000000120ba80 .scope module, "ControlUnit_tb" "ControlUnit_tb" 2 2;
+ .timescale 0 0;
+v00000000010c6660_0 .net "ALUOp", 1 0, L_00000000010c67a0;  1 drivers
+v00000000010c6700_0 .net "ALUSrc", 0 0, L_00000000010c6340;  1 drivers
+v00000000010c59e0_0 .net "Branch", 0 0, L_00000000010c63e0;  1 drivers
+v00000000010c5e40_0 .net "MemRead", 0 0, L_00000000010c6020;  1 drivers
+v00000000010c5da0_0 .net "MemToReg", 0 0, L_00000000010c6520;  1 drivers
+v00000000010c5ee0_0 .net "MemWrite", 0 0, L_00000000010c6160;  1 drivers
+v00000000010c60c0_0 .net "RegWrite", 0 0, L_00000000010c5f80;  1 drivers
+v00000000010c6480_0 .var "opcode", 6 0;
+S_000000000120cb90 .scope module, "control" "ControlUnit" 2 7, 3 1 0, S_000000000120ba80;
+ .timescale 0 0;
+    .port_info 0 /INPUT 7 "Opcode";
+    .port_info 1 /OUTPUT 1 "ALUSrc";
+    .port_info 2 /OUTPUT 1 "MemToReg";
+    .port_info 3 /OUTPUT 1 "RegWrite";
+    .port_info 4 /OUTPUT 1 "MemRead";
+    .port_info 5 /OUTPUT 1 "MemWrite";
+    .port_info 6 /OUTPUT 1 "Branch";
+    .port_info 7 /OUTPUT 2 "ALUOp";
+v000000000120cd20_0 .net "ALUOp", 1 0, L_00000000010c67a0;  alias, 1 drivers
+v000000000120cdc0_0 .net "ALUSrc", 0 0, L_00000000010c6340;  alias, 1 drivers
+v000000000120ce60_0 .net "Branch", 0 0, L_00000000010c63e0;  alias, 1 drivers
+v000000000120cf00_0 .net "MemRead", 0 0, L_00000000010c6020;  alias, 1 drivers
+v000000000120cfa0_0 .net "MemToReg", 0 0, L_00000000010c6520;  alias, 1 drivers
+v0000000001042760_0 .net "MemWrite", 0 0, L_00000000010c6160;  alias, 1 drivers
+v0000000001042800_0 .net "Opcode", 6 0, v00000000010c6480_0;  1 drivers
+v00000000010428a0_0 .net "RegWrite", 0 0, L_00000000010c5f80;  alias, 1 drivers
+v00000000010c62a0_0 .net *"_ivl_9", 7 0, v00000000010c65c0_0;  1 drivers
+v00000000010c65c0_0 .var "controls", 7 0;
+E_00000000010650f0 .event edge, v0000000001042800_0;
+L_00000000010c6340 .part v00000000010c65c0_0, 7, 1;
+L_00000000010c6520 .part v00000000010c65c0_0, 6, 1;
+L_00000000010c5f80 .part v00000000010c65c0_0, 5, 1;
+L_00000000010c6020 .part v00000000010c65c0_0, 4, 1;
+L_00000000010c6160 .part v00000000010c65c0_0, 3, 1;
+L_00000000010c63e0 .part v00000000010c65c0_0, 2, 1;
+L_00000000010c67a0 .part v00000000010c65c0_0, 0, 2;
+    .scope S_000000000120cb90;
+T_0 ;
+    %wait E_00000000010650f0;
+    %load/vec4 v0000000001042800_0;
+    %dup/vec4;
+    %pushi/vec4 51, 0, 7;
+    %cmp/u;
+    %jmp/1 T_0.0, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 7;
+    %cmp/u;
+    %jmp/1 T_0.1, 6;
+    %dup/vec4;
+    %pushi/vec4 35, 0, 7;
+    %cmp/u;
+    %jmp/1 T_0.2, 6;
+    %dup/vec4;
+    %pushi/vec4 99, 0, 7;
+    %cmp/u;
+    %jmp/1 T_0.3, 6;
+    %pushi/vec4 255, 255, 8;
+    %store/vec4 v00000000010c65c0_0, 0, 8;
+    %jmp T_0.5;
+T_0.0 ;
+    %pushi/vec4 34, 0, 8;
+    %store/vec4 v00000000010c65c0_0, 0, 8;
+    %jmp T_0.5;
+T_0.1 ;
+    %pushi/vec4 240, 0, 8;
+    %store/vec4 v00000000010c65c0_0, 0, 8;
+    %jmp T_0.5;
+T_0.2 ;
+    %pushi/vec4 200, 64, 8;
+    %store/vec4 v00000000010c65c0_0, 0, 8;
+    %jmp T_0.5;
+T_0.3 ;
+    %pushi/vec4 69, 64, 8;
+    %store/vec4 v00000000010c65c0_0, 0, 8;
+    %jmp T_0.5;
+T_0.5 ;
+    %pop/vec4 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_000000000120ba80;
+T_1 ;
+    %pushi/vec4 51, 0, 7;
+    %store/vec4 v00000000010c6480_0, 0, 7;
+    %delay 15, 0;
+    %vpi_call 2 10 "$display", "OpCode: %b\012ALUSrc: %b, MemToReg: %b, RegWrite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOp: %b\012", v00000000010c6480_0, v00000000010c6700_0, v00000000010c5da0_0, v00000000010c60c0_0, v00000000010c5e40_0, v00000000010c5ee0_0, v00000000010c59e0_0, v00000000010c6660_0 {0 0 0};
+    %pushi/vec4 35, 0, 7;
+    %store/vec4 v00000000010c6480_0, 0, 7;
+    %delay 15, 0;
+    %vpi_call 2 12 "$display", "OpCode: %b\012ALUSrc: %b, MemToReg: %b, RegWrite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOp: %b\012", v00000000010c6480_0, v00000000010c6700_0, v00000000010c5da0_0, v00000000010c60c0_0, v00000000010c5e40_0, v00000000010c5ee0_0, v00000000010c59e0_0, v00000000010c6660_0 {0 0 0};
+    %pushi/vec4 3, 0, 7;
+    %store/vec4 v00000000010c6480_0, 0, 7;
+    %delay 15, 0;
+    %vpi_call 2 14 "$display", "OpCode: %b\012ALUSrc: %b, MemToReg: %b, RegWrite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOp: %b\012", v00000000010c6480_0, v00000000010c6700_0, v00000000010c5da0_0, v00000000010c60c0_0, v00000000010c5e40_0, v00000000010c5ee0_0, v00000000010c59e0_0, v00000000010c6660_0 {0 0 0};
+    %pushi/vec4 99, 0, 7;
+    %store/vec4 v00000000010c6480_0, 0, 7;
+    %delay 15, 0;
+    %vpi_call 2 16 "$display", "OpCode: %b\012ALUSrc: %b, MemToReg: %b, RegWrite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOp: %b\012", v00000000010c6480_0, v00000000010c6700_0, v00000000010c5da0_0, v00000000010c60c0_0, v00000000010c5e40_0, v00000000010c5ee0_0, v00000000010c59e0_0, v00000000010c6660_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ControlUnit_tb.v";
+    "./ControlUnit.v";
